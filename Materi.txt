@@ -1,0 +1,121 @@
+SSH Server (Secure Shell)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install openssh-server -y
+# cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak	<- (Backup)
+# nano sshd_config
+# /etc/init.d/ssh restart
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DHCP Server (Dynamic Host Control Protocol)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install dhcp3-server -y
+# cp /etc/dhcp3/dhcpd.conf /etc/dhcp3/dhcpd.conf.bak    <- (Backup) 
+# nano /etc/dhcp3/dhcpd.conf
+# /etc/init.d/dhcp3-server restart
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DNS Server (Domain Name System)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install bind9 -y
+# cp /etc/bind/named.conf /etc/bind/named.conf.bak	<- (Backup)
+# nano /etc/bind/named.conf
+# cp /etc/bind/db.local /etc/bind/forward		<- (Backup)
+# nano /etc/bind/forward
+# cp /etc/bind/forward /etc/bind/reverse		<- (Backup)
+# nano /etc/bind/reverse
+# /etc/init.d/bind9 restart
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Web Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install apache2 -y
+# cp /etc/apache2/sites-available/default /etc/apache2/sites-available/default.bak
+# nano /etc/apache/sites-available/default
+# mkdir -p /var/www/xxx
+# cp /var/www/index.html /var/www/xxx/
+# nano /var/www/xxx/index.html				<- (Opsional)
+# /etc/init.d/apache2 restart
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+FTP Server (File Transfer Protocol)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install proftpd -y
+# cp /etc/proftpd/proftpd.conf /etc/proftpd.conf.bak	<- (Backup)
+# nano /etc/proftpd/proftpd.conf
+# adduser xxxxx
+# chmod -R 777 /home/xxxxx
+# chown -R 777 /home/xxxxx
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LAMP (Localhost, Apache, MySQL, PHP)
+-> Database Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install mysql-server -y
+# cp /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
+# nano /etc/mysql/my.cnf
+# mysql -u root -p
+> GRANT ALL PRIVILEGES *.* TO 'root'@'%' IDENTIFIED BY 'x' WITH GRANT OPTION;
+> FLUSH PRIVILEGES;
+> exit
+# /etc/init.d/mysql restart
+
+-> PHP Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install php5 -y
+__(Optional Option)__
+# rm /var/www/index.html
+# nano /var/www/index.php
+
+-> phpmyadmin Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install phpmyadmin -y
+__(Then Access on Client PC)__
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SAMBA Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install samba -y
+# cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+# nano /etc/samba/smb.conf
+# adduser xxx
+# smbpasswd -a xxx
+# mkdir -p xxx/xxx/xxx/
+# chmod -R 777 xxx/xxx/xxx/
+# chown -R 777 xxx/xxx/xxx/
+# /etc/init.d/samba restart
+__(Then Access on Client)__
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Mail Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install squirrelmail postfix courier-imap courier-pop -y
+# nano /etc/postfix/main.cf
+z# /etc/squirrelmail/conf.pl
+>> 1
+>> 1
+]]: xxxxxxxxxxx
+>> R
+>> 2
+>> 1
+]]: xxxxx.xxx
+>> R
+>> D
+>> courier
+>> S
+>> Q
+# nano /etc/squirrelmail/apache.conf
+# ln -s /usr/share/squirrelmail/ /var/www/webmail
+# adduser xxxx
+# adduser yyyy
+# /etc/init.d/postfix restart
+# /etc/init.d/apache2 restart
+__(Then Access on Client)__
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
