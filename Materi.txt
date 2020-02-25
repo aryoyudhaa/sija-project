@@ -119,3 +119,32 @@ z# /etc/squirrelmail/conf.pl
 __(Then Access on Client)__
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+PROXY Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# apt-get install squid -y
+# cp /etc/squid/squid.conf /etc/squid/squid.conf.bak
+# nano /etc/squid/squid.conf
+^_ >> 629
+^_ >> 1114
+^_ >> 3325
+# nano /etc/squid/xxxx.txt
+# nano /etc/rc.local
+||iptables -t nat -A REROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+# /etc/init.d/squid restart
+# /etc/rc.local
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+Note : xxx => example (whatever u want)
